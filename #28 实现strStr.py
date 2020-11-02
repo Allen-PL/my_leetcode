@@ -21,14 +21,24 @@
 """
 
 
-def strStr(self, haystack, needle):
+def strStr(haystack, needle):
     """
     :type haystack: str
     :type needle: str
     :rtype: int
     """
+    if not needle:
+        return 0
+    n_l = list(needle)
+    h_l = list(haystack)
+    for index, s in enumerate(h_l):
+        if n_l[0] == s:
+            if haystack[index:index+len(n_l)] == needle:
+                return index
+    return -1
 
 
 if __name__ == '__main__':
-    nums = [1, 2]
-    print(strStr(nums))
+    haystack = "heldaalo"
+    needle = "dasa"
+    print(strStr(haystack, needle))
