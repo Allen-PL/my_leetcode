@@ -27,8 +27,21 @@
 """
 
 
-def isSymmetric(self, root):
+def isSymmetric(root):
     """
     :type root: TreeNode
     :rtype: bool
     """
+    print(root.left)
+    if not root:
+        return True
+    def dfs(left, right):
+        pass
+
+    return dfs(root.left, root.right)
+
+
+
+if __name__ == '__main__':
+    root = [1, 2,1, 3,3,4,5]
+    print(isSymmetric(root))

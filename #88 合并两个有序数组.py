@@ -28,26 +28,25 @@ def merge(nums1, m, nums2, n):
     :type n: int
     :rtype: None Do not return anything, modify nums1 in-place instead.
     """
+    if m + n == n:
+        for i in range(n):
+            nums1[i] = nums2[i]
+        return nums1
     index = 0
-    count = n
-    for num1 in nums1[-n-1::-1]:
-        # print(num1)
-        print(nums1)
-        if not count:
-            break
+    for num1 in nums1[-n - 1::-1]:
+        if not nums2:
+            return nums1
         for num2 in nums2[::-1]:
-            print(nums2)
-            if num2 > num1:
+            if num2 >= num1:
                 index += 1
-                nums1[-index] = nums2[-index]
-                count -= 1
+                nums1[-index] = nums2.pop(-1)
             else:
                 index += 1
                 nums1[-index] = num1
-
-                break
-
-    return nums1
+        else:
+            if index == m + n - 1:
+                nums1[0] = nums2.pop(0)
+                return nums1
 
 
 if __name__ == '__main__':
