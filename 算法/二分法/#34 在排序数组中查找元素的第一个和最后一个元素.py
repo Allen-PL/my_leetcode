@@ -29,9 +29,39 @@ def searchRange(nums, target):
     :type target: int
     :rtype: List[int]
     """
+    def first_num():
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right) >> 1
+            if nums[mid] == target:
+                if left == right - 1 or nums[mid - 1] < target:
+                    return mid
+                right = mid - 1
+            if nums[mid] < target:
+                left = mid + 1
+            if nums[mid] > target:
+                right = mid - 1
+        return -1
+
+    def last_num():
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right + 1) >> 1
+            if nums[mid] == target:
+                if left == right - 1 or nums[mid + 1] > target:
+                    return mid
+                left = mid
+            if nums[mid] < target:
+                left = mid
+            if nums[mid] > target:
+                right = mid - 1
+        return -1
+    return [first_num(), last_num()]
 
 
 if __name__ == '__main__':
-    nums = [-1]
-    target = -1
+    nums = [1,2,3, 7,7,7,7,7,7,7,7,8,9]
+    target = 7
     print(searchRange(nums, target))
