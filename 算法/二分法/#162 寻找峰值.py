@@ -27,3 +27,27 @@
 
 你的解法应该是(logN)时间复杂度的。
 """
+
+
+def findPeakElement(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    left = 0
+    right = len(nums) - 1
+    while left < right:
+        mid = (left + right) >> 1 + left
+        if nums[mid] < nums[mid - 1] and mid > 0:
+            right = mid
+        elif nums[mid] < nums[mid + 1] and mid < len(nums):
+            left = mid + 1
+        else:
+            return mid
+    return -1
+
+
+if __name__ == '__main__':
+    nums = [1,2,3, 7,7,7,7,7,7,7,7,8,9]
+    target = 7
+    print(findPeakElement(nums))
