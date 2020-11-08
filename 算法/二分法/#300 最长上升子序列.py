@@ -21,3 +21,10 @@
 """
 
 def lengthOfLIS(self, nums: List[int]) -> int:
+
+    pass
+
+if __name__ == '__main__':
+    nums = [1,2,3, 7,7,7,7,7,7,7,7,8,9]
+    target = 7
+    print(findPeakElement(nums))
