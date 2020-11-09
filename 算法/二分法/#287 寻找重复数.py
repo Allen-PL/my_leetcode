@@ -23,3 +23,27 @@
 数组中只有一个重复的数字，但它可能不止重复出现一次。
 
 """
+from typing import List
+
+
+def lengthOfLIS(nums: List[int]) -> int:
+    left = 1
+    right = len(nums) - 1
+    while left < right:
+        mid = (left + right + 1) >> 1
+
+        cut = 0
+        for num in nums:
+            if num <= mid:
+                cut += 1
+
+        if cut > mid:
+            right = mid
+        else:
+            left = mid + 1
+    return left
+
+
+if __name__ == '__main__':
+    nums = [1, 2, 3, 7,8, 9]
+    print(lengthOfLIS(nums))
