@@ -13,13 +13,42 @@ import "fmt"
 
 func canJump(nums []int) bool {
 
+	for index, num  := range nums {
+		if num == 0 {
+			// 开始等于0，gg
+			if index == 0 {
+				if len(nums) == 1 {
+					return true
+				}
+				return false
+			}
 
+			i := 1
+			for index - 1  >= 0 {
+				if nums[index - 1] < i {
+					if index - 1 == 0 {
+						return false
+					}
+				}
+				if nums[index - 1] == 0 {
+					if index == len(nums) {
+						return true
+					}
+				}
+				i++
+				index--
+			}
 
-	return false
+		}
+	}
+
+	return true
 }
 
 
 func main() {
-	nums := []int{2,3,1,1,4}
+	//nums := []int{2,3,1,1,4}
+	nums := []int{3,2,1,0,4}
+	//nums := []int{2,0,0}
 	fmt.Println(canJump(nums))
 }
